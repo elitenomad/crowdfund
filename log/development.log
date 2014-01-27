@@ -1,0 +1,1542 @@
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProjects (20130228190011)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "target_pledge_amount" decimal, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130228190011"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddFieldsToProjects (20130228190204)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "projects" ADD "website" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "projects" ADD "pledging_ends_on" date
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130228190204"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to AddMoreFieldsToProjects (20130228222855)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "projects" ADD "team_members" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "projects" ADD "image_file_name" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130228222855"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "projects" ("created_at", "description", "image_file_name", "name", "pledging_ends_on", "target_pledge_amount", "team_members", "updated_at", "website") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 12 Dec 2013 10:59:28 UTC +00:00], ["description", "A description of a start-up project"], ["image_file_name", "project-a.png"], ["name", "Start-Up Project"], ["pledging_ends_on", Fri, 13 Dec 2013], ["target_pledge_amount", #<BigDecimal:7fc48a764930,'0.1E3',9(45)>], ["team_members", "Amber, John, Charles"], ["updated_at", Thu, 12 Dec 2013 10:59:28 UTC +00:00], ["website", "http://project-a.com"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "projects" ("created_at", "description", "image_file_name", "name", "pledging_ends_on", "target_pledge_amount", "team_members", "updated_at", "website") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Thu, 12 Dec 2013 10:59:28 UTC +00:00], ["description", "A description of a community project"], ["image_file_name", "project-b.png"], ["name", "Community Project"], ["pledging_ends_on", Thu, 19 Dec 2013], ["target_pledge_amount", #<BigDecimal:7fc48c01ba50,'0.2E3',9(45)>], ["team_members", "Diana, Jane, Joe"], ["updated_at", Thu, 12 Dec 2013 10:59:28 UTC +00:00], ["website", "http://project-b.com"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "projects" ("created_at", "description", "image_file_name", "name", "pledging_ends_on", "target_pledge_amount", "team_members", "updated_at", "website") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Thu, 12 Dec 2013 10:59:28 UTC +00:00], ["description", "A description of a person project"], ["image_file_name", "project-c.png"], ["name", "Personal Project"], ["pledging_ends_on", Sun, 12 Jan 2014], ["target_pledge_amount", #<BigDecimal:7fc48c07da20,'0.3E3',9(45)>], ["team_members", "Tom, Harry, Sally"], ["updated_at", Thu, 12 Dec 2013 10:59:28 UTC +00:00], ["website", "http://project-c.com"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "target_pledge_amount" decimal, "created_at" datetime, "updated_at" datetime, "website" varchar(255), "pledging_ends_on" date, "team_members" varchar(255), "image_file_name" varchar(255)) [0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130228222855')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130228190011')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130228190204')[0m
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-12 10:59:52.163444') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (43.5ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 658ms (Views: 641.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/elements.css?body=1" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/buttons.css?body=1" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/forms.css?body=1" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/add.png" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/project-a.png" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/background.jpg" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/project-b.png" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/assets/project-c.png" for 127.0.0.1 at 2013-12-12 21:59:52 +1100
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-12 11:01:03.196338') ORDER BY pledging_ends_on asc[0m
+  Rendered projects/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/elements.css?body=1" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/buttons.css?body=1" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/forms.css?body=1" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/project-a.png" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/project-c.png" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/assets/project-b.png" for 127.0.0.1 at 2013-12-12 22:01:03 +1100
+
+
+Started GET "/projects" for 127.0.0.1 at 2013-12-12 22:01:10 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-12 11:01:10.217949') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/project-a.png" for 127.0.0.1 at 2013-12-12 22:01:10 +1100
+
+
+Started GET "/assets/project-b.png" for 127.0.0.1 at 2013-12-12 22:01:10 +1100
+
+
+Started GET "/assets/project-c.png" for 127.0.0.1 at 2013-12-12 22:01:10 +1100
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2013-12-12 22:01:12 +1100
+Processing by ProjectsController#new as HTML
+  Rendered projects/_form.html.erb (9.8ms)
+  Rendered projects/new.html.erb within layouts/application (10.7ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2013-12-12 22:01:20 +1100
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-12 11:01:20.665598') ORDER BY pledging_ends_on asc[0m
+  Rendered projects/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/project-b.png" for 127.0.0.1 at 2013-12-12 22:01:20 +1100
+
+
+Started GET "/assets/project-a.png" for 127.0.0.1 at 2013-12-12 22:01:20 +1100
+
+
+Started GET "/assets/project-c.png" for 127.0.0.1 at 2013-12-12 22:01:20 +1100
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2013-12-12 22:01:22 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered projects/show.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/project-a.png" for 127.0.0.1 at 2013-12-12 22:01:22 +1100
+
+
+Started GET "/projects/1/edit" for 127.0.0.1 at 2013-12-12 22:01:23 +1100
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered projects/_form.html.erb (30.4ms)
+  Rendered projects/edit.html.erb within layouts/application (31.4ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 38ms (Views: 36.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2013-12-12 22:01:29 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-12 11:01:29.013325') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/project-a.png" for 127.0.0.1 at 2013-12-12 22:01:29 +1100
+
+
+Started GET "/assets/project-b.png" for 127.0.0.1 at 2013-12-12 22:01:29 +1100
+
+
+Started GET "/assets/project-c.png" for 127.0.0.1 at 2013-12-12 22:01:29 +1100
+
+
+Started GET "/projects" for 127.0.0.1 at 2013-12-12 22:01:30 +1100
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-12 11:01:30.666433') ORDER BY pledging_ends_on asc[0m
+  Rendered projects/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/project-a.png" for 127.0.0.1 at 2013-12-12 22:01:30 +1100
+
+
+Started GET "/assets/project-c.png" for 127.0.0.1 at 2013-12-12 22:01:30 +1100
+
+
+Started GET "/assets/project-b.png" for 127.0.0.1 at 2013-12-12 22:01:30 +1100
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2013-12-12 22:01:32 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered projects/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/project-a.png" for 127.0.0.1 at 2013-12-12 22:01:33 +1100
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-17 11:05:20 +1100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-17 00:05:20.232336') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (50.1ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_sidebar.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 148ms (Views: 129.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-17 11:05:20 +1100
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-17 00:05:20.367288') ORDER BY pledging_ends_on asc[0m
+  Rendered projects/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2013-12-17 11:05:20 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2013-12-17 11:05:20 +1100
+
+
+Started GET "/assets/project-b.png" for 127.0.0.1 at 2013-12-17 11:05:20 +1100
+
+
+Started GET "/assets/project-c.png" for 127.0.0.1 at 2013-12-17 11:05:20 +1100
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2013-12-17 11:05:25 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "2"]]
+  Rendered projects/show.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects/2/edit" for 127.0.0.1 at 2013-12-17 11:05:27 +1100
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  Rendered projects/_form.html.erb (16.3ms)
+  Rendered projects/edit.html.erb within layouts/application (18.5ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 27ms (Views: 25.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2013-12-17 11:05:32 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-17 00:05:32.646639') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2013-12-17 11:05:33 +1100
+Processing by ProjectsController#new as HTML
+  Rendered projects/_form.html.erb (7.7ms)
+  Rendered projects/new.html.erb within layouts/application (8.9ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 16ms (Views: 15.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2013-12-17 11:05:34 +1100
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-17 00:05:34.891836') ORDER BY pledging_ends_on asc[0m
+  Rendered projects/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2013-12-17 11:05:36 +1100
+Processing by ProjectsController#new as HTML
+  Rendered projects/_form.html.erb (4.2ms)
+  Rendered projects/new.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2013-12-17 11:07:50 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-17 00:07:50.650813') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2013-12-17 11:11:01 +1100
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-17 00:11:01.127332') ORDER BY pledging_ends_on asc[0m
+  Rendered projects/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2013-12-17 11:11:01 +1100
+Processing by ProjectsController#new as HTML
+  Rendered projects/_form.html.erb (3.5ms)
+  Rendered projects/new.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2013-12-17 11:11:03 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-17 00:11:03.354601') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2013-12-17 11:11:06 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  Rendered projects/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects/2/edit" for 127.0.0.1 at 2013-12-17 11:11:09 +1100
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "2"]]
+  Rendered projects/_form.html.erb (3.6ms)
+  Rendered projects/edit.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-17 11:11:18 +1100
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-17 00:11:18.575489') ORDER BY pledging_ends_on asc[0m
+  Rendered projects/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2013-12-17 00:12:05.176799') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/forms.css?body=1" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/elements.css?body=1" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/buttons.css?body=1" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/project-c.png" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/background.jpg" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/add.png" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/assets/project-b.png" for 127.0.0.1 at 2013-12-17 11:12:05 +1100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-25 14:02:55 +1100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-25 03:02:55.579422') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 468ms (Views: 451.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/buttons.css?body=1" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/elements.css?body=1" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/forms.css?body=1" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/background.jpg" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/assets/add.png" for 127.0.0.1 at 2014-01-25 14:02:56 +1100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-25 14:02:59 +1100
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-25 03:02:59.516489') ORDER BY pledging_ends_on asc[0m
+  Rendered projects/index.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-01-25 14:03:06 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-25 03:03:06.416918') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2014-01-25 14:03:08 +1100
+Processing by ProjectsController#new as HTML
+  Rendered projects/_form.html.erb (34.3ms)
+  Rendered projects/new.html.erb within layouts/application (35.4ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 43ms (Views: 41.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/projects" for 127.0.0.1 at 2014-01-25 14:03:56 +1100
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3DQ0PsyeLvcVIeAuySFsENxkgEd2WC0m0yB+degZjGQ=", "project"=>{"name"=>"Ruby Project", "description"=>"All course material, including videos, slides, and source code, is copyrighted and licensed for individual use only. You may make copies for your own personal use (e.g. on your laptop, on your iPad, on your backup drive). However, you may not transfer ownership or share the material with other people. We make no guarantees that the source code is fit for any purpose. Course material may not be used to create training material, courses, books, and the like. Please support us and our instructors by encouraging others to purchase their own copies. Thank you!", "pledging_ends_on(1i)"=>"2014", "pledging_ends_on(2i)"=>"1", "pledging_ends_on(3i)"=>"29", "target_pledge_amount"=>"4000", "website"=>"http://loveyou.com", "team_members"=>"Pranava S Balugari", "image_file_name"=>"pranava.jpg"}, "commit"=>"Create Project"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "projects" ("created_at", "description", "image_file_name", "name", "pledging_ends_on", "target_pledge_amount", "team_members", "updated_at", "website") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Sat, 25 Jan 2014 03:03:56 UTC +00:00], ["description", "All course material, including videos, slides, and source code, is copyrighted and licensed for individual use only. You may make copies for your own personal use (e.g. on your laptop, on your iPad, on your backup drive). However, you may not transfer ownership or share the material with other people. We make no guarantees that the source code is fit for any purpose. Course material may not be used to create training material, courses, books, and the like. Please support us and our instructors by encouraging others to purchase their own copies. Thank you!"], ["image_file_name", "pranava.jpg"], ["name", "Ruby Project"], ["pledging_ends_on", Wed, 29 Jan 2014], ["target_pledge_amount", #<BigDecimal:103a22a98,'0.4E4',9(18)>], ["team_members", "Pranava S Balugari"], ["updated_at", Sat, 25 Jan 2014 03:03:56 UTC +00:00], ["website", "http://loveyou.com"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/projects/4
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-25 14:03:56 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (3.6ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 34ms (Views: 32.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-25 14:03:56 +1100
+
+
+Started GET "/images/pranava.jpg" for 127.0.0.1 at 2014-01-25 14:03:56 +1100
+
+ActionController::RoutingError (No route matches [GET] "/images/pranava.jpg"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (17.3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-25 14:03:56 +1100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-25 14:03:56 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-01-25 14:03:56 +1100
+
+
+Started GET "/images/pranava.jpg" for 127.0.0.1 at 2014-01-25 14:03:56 +1100
+
+ActionController::RoutingError (No route matches [GET] "/images/pranava.jpg"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.6ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (12.9ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-01-25 14:03:59 +1100
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-25 03:03:59.222784') ORDER BY pledging_ends_on asc[0m
+  Rendered projects/index.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/images/pranava.jpg" for 127.0.0.1 at 2014-01-25 14:03:59 +1100
+
+ActionController::RoutingError (No route matches [GET] "/images/pranava.jpg"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (14.1ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-25 14:04:29 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (3.1ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/images/pranava.jpg" for 127.0.0.1 at 2014-01-25 14:04:29 +1100
+
+ActionController::RoutingError (No route matches [GET] "/images/pranava.jpg"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.7ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (13.3ms)
+
+
+Started GET "/projects/4/edit" for 127.0.0.1 at 2014-01-25 14:04:32 +1100
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered projects/_form.html.erb (4.3ms)
+  Rendered projects/edit.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/projects/4" for 127.0.0.1 at 2014-01-25 14:04:40 +1100
+Processing by ProjectsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3DQ0PsyeLvcVIeAuySFsENxkgEd2WC0m0yB+degZjGQ=", "project"=>{"name"=>"Ruby Project", "description"=>"All course material, including videos, slides, and source code, is copyrighted and licensed for individual use only. You may make copies for your own personal use (e.g. on your laptop, on your iPad, on your backup drive). However, you may not transfer ownership or share the material with other people. We make no guarantees that the source code is fit for any purpose. Course material may not be used to create training material, courses, books, and the like. Please support us and our instructors by encouraging others to purchase their own copies. Thank you!", "pledging_ends_on(1i)"=>"2014", "pledging_ends_on(2i)"=>"1", "pledging_ends_on(3i)"=>"29", "target_pledge_amount"=>"4000", "website"=>"http://loveyou.com", "team_members"=>"Pranava S Balugari", "image_file_name"=>"project-a.jpg"}, "commit"=>"Update Project", "id"=>"4"}
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "4"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "projects" SET "image_file_name" = ?, "updated_at" = ? WHERE "projects"."id" = 4  [["image_file_name", "project-a.jpg"], ["updated_at", Sat, 25 Jan 2014 03:04:40 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/projects/4
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-25 14:04:40 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/images/project-a.jpg" for 127.0.0.1 at 2014-01-25 14:04:40 +1100
+
+ActionController::RoutingError (No route matches [GET] "/images/project-a.jpg"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.7ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (13.9ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:40 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:40 +1100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:40 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:40 +1100
+
+
+Started GET "/images/project-a.jpg" for 127.0.0.1 at 2014-01-25 14:04:40 +1100
+
+ActionController::RoutingError (No route matches [GET] "/images/project-a.jpg"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (30.3ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.7ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (42.7ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/elements.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+
+Started GET "/assets/buttons.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+
+Started GET "/assets/forms.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+
+Started GET "/images/project-a.jpg" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+ActionController::RoutingError (No route matches [GET] "/images/project-a.jpg"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.6ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.7ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (12.3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+
+Started GET "/images/project-a.jpg" for 127.0.0.1 at 2014-01-25 14:04:43 +1100
+
+ActionController::RoutingError (No route matches [GET] "/images/project-a.jpg"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/pranavaswaroop/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/pranavaswaroop/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (18.1ms)
+
+
+Started GET "/projects/4/edit" for 127.0.0.1 at 2014-01-25 14:04:45 +1100
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "4"]]
+  Rendered projects/_form.html.erb (4.0ms)
+  Rendered projects/edit.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/projects/4" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+Processing by ProjectsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3DQ0PsyeLvcVIeAuySFsENxkgEd2WC0m0yB+degZjGQ=", "project"=>{"name"=>"Ruby Project", "description"=>"All course material, including videos, slides, and source code, is copyrighted and licensed for individual use only. You may make copies for your own personal use (e.g. on your laptop, on your iPad, on your backup drive). However, you may not transfer ownership or share the material with other people. We make no guarantees that the source code is fit for any purpose. Course material may not be used to create training material, courses, books, and the like. Please support us and our instructors by encouraging others to purchase their own copies. Thank you!", "pledging_ends_on(1i)"=>"2014", "pledging_ends_on(2i)"=>"1", "pledging_ends_on(3i)"=>"29", "target_pledge_amount"=>"4000", "website"=>"http://loveyou.com", "team_members"=>"Pranava S Balugari", "image_file_name"=>"project-a.png"}, "commit"=>"Update Project", "id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "projects" SET "image_file_name" = ?, "updated_at" = ? WHERE "projects"."id" = 4[0m  [["image_file_name", "project-a.png"], ["updated_at", Sat, 25 Jan 2014 03:04:51 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/projects/4
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/assets/elements.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/assets/project-a.png" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/assets/buttons.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/assets/forms.css?body=1" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-01-25 14:04:51 +1100
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-01-25 14:04:53 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-25 03:04:53.791851') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-25 14:04:55 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-01-25 14:04:58 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-25 03:04:58.010569') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-25 14:06:59 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 48ms (Views: 6.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.4ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-26 00:23:36.222833') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (47.1ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_sidebar.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 122ms (Views: 104.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/elements.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/project-a.png" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/buttons.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/forms.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/background.jpg" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/add.png" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2014-01-26 11:23:36 +1100
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-26 11:23:37 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-01-26 11:23:39 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-26 00:23:39.226759') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-26 11:23:41 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-01-26 11:23:44 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-26 00:23:44.780325') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-26 11:23:46 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects/4/edit" for 127.0.0.1 at 2014-01-26 11:23:48 +1100
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "4"]]
+  Rendered projects/_form.html.erb (21.2ms)
+  Rendered projects/edit.html.erb within layouts/application (22.5ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 30ms (Views: 28.8ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/projects/4" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+Processing by ProjectsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PA/YeQbYm3md5wro/CJCK4Xmgwekz9FSPhhETHsDix4=", "project"=>{"name"=>"Ruby Project", "description"=>"All course material, including videos, slides, and source code, is copyrighted and licensed for individual use only. You may make copies for your own personal use (e.g. on your laptop, on your iPad, on your backup drive). However, you may not transfer ownership or share the material with other people. We make no guarantees that the source code is fit for any purpose. Course material may not be used to create training material, courses, books, and the like. Please support us and our instructors by encouraging others to purchase their own copies. Thank you!", "pledging_ends_on(1i)"=>"2014", "pledging_ends_on(2i)"=>"1", "pledging_ends_on(3i)"=>"29", "target_pledge_amount"=>"4000", "website"=>"http://loveyou.com", "team_members"=>"Pranava S Balugari", "image_file_name"=>"project-a.png"}, "commit"=>"Update Project", "id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/projects/4
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+
+
+Started GET "/assets/elements.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+
+
+Started GET "/assets/buttons.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+
+
+Started GET "/assets/forms.css?body=1" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-26 11:23:56 +1100
+
+
+Started GET "/projects/4/edit" for 127.0.0.1 at 2014-01-26 11:32:58 +1100
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered projects/_form.html.erb (4.3ms)
+  Rendered projects/edit.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/projects/4" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+Processing by ProjectsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PA/YeQbYm3md5wro/CJCK4Xmgwekz9FSPhhETHsDix4=", "project"=>{"name"=>"Ruby Project", "description"=>"All course material, including videos, slides, and source code, is copyrighted and licensed for individual use only. You may make copies for your own personal use (e.g. on your laptop, on your iPad, on your backup drive). However, you may not transfer ownership or share the material with other people. We make no guarantees that the source code is fit for any purpose. Course material may not be used to create training material, courses, books, and the like. Please support us and our instructors by encouraging others to purchase their own copies. Thank you!", "pledging_ends_on(1i)"=>"2014", "pledging_ends_on(2i)"=>"1", "pledging_ends_on(3i)"=>"29", "target_pledge_amount"=>"4000", "website"=>"http://loveyou.com", "team_members"=>"Pranava S Balugari", "image_file_name"=>"project-a.png"}, "commit"=>"Update Project", "id"=>"4"}
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "4"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/projects/4
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+
+
+Started GET "/assets/elements.css?body=1" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+
+
+Started GET "/assets/forms.css?body=1" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+
+
+Started GET "/assets/buttons.css?body=1" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-26 11:33:00 +1100
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-01-26 11:35:01 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-26 00:35:01.526204') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-26 11:35:03 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects/4/edit" for 127.0.0.1 at 2014-01-26 11:35:05 +1100
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "4"]]
+  Rendered projects/_form.html.erb (3.6ms)
+  Rendered projects/edit.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 38ms (Views: 36.5ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/projects/4" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+Processing by ProjectsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PA/YeQbYm3md5wro/CJCK4Xmgwekz9FSPhhETHsDix4=", "project"=>{"name"=>"Ruby Project", "description"=>"All course material, including videos, slides, and source code, is copyrighted and licensed for individual use only. You may make copies for your own personal use (e.g. on your laptop, on your iPad, on your backup drive). However, you may not transfer ownership or share the material with other people. We make no guarantees that the source code is fit for any purpose. Course material may not be used to create training material, courses, books, and the like. Please support us and our instructors by encouraging others to purchase their own copies. Thank you!", "pledging_ends_on(1i)"=>"2014", "pledging_ends_on(2i)"=>"1", "pledging_ends_on(3i)"=>"29", "target_pledge_amount"=>"4000", "website"=>"http://loveyou.com", "team_members"=>"Pranava S Balugari", "image_file_name"=>"project-a.png"}, "commit"=>"Update Project", "id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/projects/4
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+
+
+Started GET "/assets/elements.css?body=1" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+
+
+Started GET "/assets/buttons.css?body=1" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+
+
+Started GET "/assets/forms.css?body=1" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-26 11:35:06 +1100
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-01-26 11:35:11 +1100
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-26 00:35:11.107133') ORDER BY pledging_ends_on asc[0m
+  Rendered projects/index.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-26 11:35:13 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mProject Load (0.1ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2014-01-26 12:03:52 +1100
+Processing by ProjectsController#new as HTML
+  Rendered projects/_form.html.erb (6.8ms)
+  Rendered projects/new.html.erb within layouts/application (7.8ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-01-26 12:03:54 +1100
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-26 01:03:54.303116') ORDER BY pledging_ends_on asc[0m
+  Rendered projects/index.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-01-26 12:03:56 +1100
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects" WHERE (pledging_ends_on >= '2014-01-26 01:03:56.147893') ORDER BY pledging_ends_on asc
+  Rendered projects/index.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/projects/4" for 127.0.0.1 at 2014-01-26 12:03:57 +1100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered projects/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_sidebar.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.1ms)
